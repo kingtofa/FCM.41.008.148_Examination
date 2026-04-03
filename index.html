@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Dream Villa VR</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <style>
+    #instructions {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.65); color: #fff; padding: 10px 26px;
+      border-radius: 25px; font-family: Arial, sans-serif; font-size: 14px;
+      z-index: 9999; pointer-events: none; white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+<div id="instructions">WASD = Move | Mouse = Look | Click scene to capture mouse | Walk into the villa!</div>
+
+<a-scene background="color:#6ea8d0" fog="type:linear;color:#b8d8f0;near:55;far:130">
+
+  <a-light type="ambient" color="#c8d8e8" intensity="0.35"></a-light>
+  <a-light type="directional" color="#ffe8c0" intensity="0.9" position="20 30 15"></a-light>
+  <a-light type="point" color="#ffcc88" intensity="0.45" position="-6.5 3.8 -4.5" distance="9" decay="2"></a-light>
+  <a-light type="point" color="#ffe0a0" intensity="0.40" position=" 6.0 3.8 -4.5" distance="9" decay="2"></a-light>
+  <a-light type="point" color="#ffbb66" intensity="0.40" position="-6.5 3.8  3.5" distance="9" decay="2"></a-light>
+  <a-light type="point" color="#d0eaff" intensity="0.35" position=" 6.5 3.8  3.5" distance="9" decay="2"></a-light>
+
+  <a-entity id="rig" position="0 0 17" wasd-controls="acceleration:20" look-controls="pointerLockEnabled:true">
+    <a-camera position="5 1.7 30" fov="75" near="0.1"><a-cursor color="#ffffff" opacity="0.7"></a-cursor></a-camera>
+  </a-entity>
+
+  <!-- GROUND AND DRIVEWAY -->
+  <a-plane position="5 0 0" rotation="-90 0 0" width="110" height="90"  repeat="20" material="color:#d3d3d3" src="texture\ground4.jpg"></a-plane>
+
+  
+  
+  <!-- ═══════════════════════════════════════════════════════
+       NEW: FLOWER POTS — one each side of front entrance
+       Left at (-6,0,12)   Right at (+6,0,12)
+  ═══════════════════════════════════════════════════════ -->
+  <!-- LEFT FLOWER POT -->
+  <a-entity position="-6 0 12">
+    <a-cylinder position="0 0.22 0" radius="0.52" height="0.44" color="#c05a20"></a-cylinder>
+    <a-cylinder position="0 0.48 0" radius="0.58" height="0.12" color="#b84e18"></a-cylinder>
+    <a-cylinder position="0 0.52 0" radius="0.50" height="0.05" color="#5a3010"></a-cylinder>
+    <a-cylinder position="0 0.56 0" radius="0.48" height="0.06" color="#3a2010"></a-cylinder>
+    <!-- stems -->
+    <a-cylinder position="0    0.82 0"     radius="0.035" height="0.52" color="#3a7a20"></a-cylinder>
+    <a-cylinder position="0.22 0.78  0.10" radius="0.030" height="0.44" color="#3a7a20"></a-cylinder>
+    <a-cylinder position="-0.20 0.80 0.08" radius="0.030" height="0.48" color="#3a7a20"></a-cylinder>
+    <a-cylinder position="0.10 0.76 -0.18" radius="0.028" height="0.42" color="#3a7a20"></a-cylinder>
+    <a-cylinder position="-0.14 0.74 -0.16" radius="0.028" height="0.40" color="#3a7a20"></a-cylinder>
+    <!-- blooms -->
+    <a-sphere position="0    1.12 0"     radius="0.20" color="#ff2255" emissive="#cc0030" emissive-intensity="0.15"></a-sphere>
+    <a-sphere position="0.22 1.06  0.10" radius="0.17" color="#ffaa00"></a-sphere>
+    <a-sphere position="-0.20 1.10 0.08" radius="0.18" color="#ff66dd" emissive="#cc00aa" emissive-intensity="0.1"></a-sphere>
+    <a-sphere position="0.10 1.04 -0.18" radius="0.16" color="#ffffff"></a-sphere>
+    <a-sphere position="-0.14 1.02 -0.16" radius="0.15" color="#44ccff" emissive="#0088cc" emissive-intensity="0.1"></a-sphere>
+    <!-- leaves -->
+    <a-sphere position="0.35 0.70 0"    radius="0.14" color="#2a8a20" opacity="0.9" transparent="true"></a-sphere>
+    <a-sphere position="-0.32 0.68 0.12" radius="0.13" color="#3a9a28" opacity="0.9" transparent="true"></a-sphere>
+    <a-sphere position="0 0.65 0.30"    radius="0.12" color="#2a8a20" opacity="0.9" transparent="true"></a-sphere>
+  </a-entity>
+
+
+  <!-- HEDGES -->
+  <a-sphere position="55 0.9 -14" radius="1.2" color="#3a6a1a"></a-sphere><a-sphere position="55 0.8 -8"  radius="1.0" color="#3a8a1a"></a-sphere><a-sphere position="55 0.9  0"  radius="1.2" color="#3a6a1a"></a-sphere><a-sphere position="55 0.8  8"  radius="1.1" color="#448a18"></a-sphere><a-sphere position="55 0.9  16" radius="1.0" color="#3a7a1a"></a-sphere>
+  <a-sphere position="-35 0.9 -14" radius="1.2" color="#3a7a1a"></a-sphere><a-sphere position="-35 0.8 -8"  radius="1.0" color="#3a6a1a"></a-sphere><a-sphere position="-35 0.9  0"  radius="1.2" color="#3a8a1a"></a-sphere><a-sphere position="-35 0.8  8"  radius="1.1" color="#448a18"></a-sphere><a-sphere position="-35 0.9  16" radius="1.0" color="#3a7a1a"></a-sphere>
+  <a-sphere position="-18 0.9 -25" radius="1.1" color="#3a8a1a"></a-sphere><a-sphere position=" -6 0.9 -25" radius="1.0" color="#3a6a1a"></a-sphere><a-sphere position="  6 0.9 -25" radius="1.2" color="#448a18"></a-sphere><a-sphere position=" 18 0.9 -25" radius="1.0" color="#3a7a1a"></a-sphere>
+
+
+
+
+  <!-- RIGHT FLOWER POT -->
+  <a-entity position="6 0 12">
+    <a-cylinder position="0 0.22 0" radius="0.52" height="0.44" color="#c05a20"></a-cylinder>
+    <a-cylinder position="0 0.48 0" radius="0.58" height="0.12" color="#b84e18"></a-cylinder>
+    <a-cylinder position="0 0.52 0" radius="0.50" height="0.05" color="#5a3010"></a-cylinder>
+    <a-cylinder position="0 0.56 0" radius="0.48" height="0.06" color="#3a2010"></a-cylinder>
+    <a-cylinder position="0    0.82 0"     radius="0.035" height="0.52" color="#3a7a20"></a-cylinder>
+    <a-cylinder position="0.22 0.78  0.10" radius="0.030" height="0.44" color="#3a7a20"></a-cylinder>
+    <a-cylinder position="-0.20 0.80 0.08" radius="0.030" height="0.48" color="#3a7a20"></a-cylinder>
+    <a-cylinder position="0.10 0.76 -0.18" radius="0.028" height="0.42" color="#3a7a20"></a-cylinder>
+    <a-cylinder position="-0.14 0.74 -0.16" radius="0.028" height="0.40" color="#3a7a20"></a-cylinder>
+    <a-sphere position="0    1.12 0"     radius="0.20" color="#ff6600" emissive="#cc3300" emissive-intensity="0.15"></a-sphere>
+    <a-sphere position="0.22 1.06  0.10" radius="0.17" color="#cc44ff" emissive="#8800cc" emissive-intensity="0.1"></a-sphere>
+    <a-sphere position="-0.20 1.10 0.08" radius="0.18" color="#ffee00" emissive="#ccaa00" emissive-intensity="0.1"></a-sphere>
+    <a-sphere position="0.10 1.04 -0.18" radius="0.16" color="#ff2255" emissive="#cc0030" emissive-intensity="0.1"></a-sphere>
+    <a-sphere position="-0.14 1.02 -0.16" radius="0.15" color="#44ffaa" emissive="#00cc66" emissive-intensity="0.1"></a-sphere>
+    <a-sphere position="0.35 0.70 0"    radius="0.14" color="#2a8a20" opacity="0.9" transparent="true"></a-sphere>
+    <a-sphere position="-0.32 0.68 0.12" radius="0.13" color="#3a9a28" opacity="0.9" transparent="true"></a-sphere>
+    <a-sphere position="0 0.65 0.30"    radius="0.12" color="#2a8a20" opacity="0.9" transparent="true"></a-sphere>
+  </a-entity>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NEW: POOL BAR HUT — in front of swimming pool
+       Centred at x=-20, z=9.5  (thatched roof, bar, stools, bottles)
+  ═══════════════════════════════════════════════════════ -->
+  <!-- Deck floor -->
+  <a-box position="-20 0.10 10.5" width="8.0" height="0.20" depth="5.0" color="#c8a870"></a-box>
+  <a-box position="-20 0.22 13.0" width="8.0" height="0.08" depth="0.12" color="#a07840"></a-box>
+  <a-box position="-20 0.22 8.0" width="8.0" height="0.08" depth="0.12" color="#a07840"></a-box>
+  <a-box position="-24.0 0.22 10.5" width="0.12" height="0.08" depth="5.0" color="#a07840"></a-box>
+  <a-box position="-16.0 0.22 10.5" width="0.12" height="0.08" depth="5.0" color="#a07840"></a-box>
+  <!-- 4 roof support posts -->
+  <a-cylinder position="-23.4 1.5 12.7" radius="0.12" height="3.0" color="#fffafa"></a-cylinder>
+  <a-cylinder position="-16.6 1.5 12.7" radius="0.12" height="3.0" color="#fffafa"></a-cylinder>
+  <a-cylinder position="-23.4 1.5 8.3" radius="0.12" height="3.0" color="#fffafa"></a-cylinder>
+  <a-cylinder position="-16.6 1.5 8.3" radius="0.12" height="3.0" color="#fffafa"></a-cylinder>
+  <!-- Thatched roof -->
+  <a-box position="-20 3.08 10.5" width="8.0" height="0.16" depth="5.6" color="#8b6914"></a-box>
+  <a-cone position="-20 4.6 10.5" radius-bottom="5.2" radius-top="0.3" height="3.2" color="#fffafa" opacity="0.95"></a-cone>
+  <a-cone position="-20 4.2 10.5" radius-bottom="4.4" radius-top="0.3" height="2.2" color="#fffafa" opacity="0.80"></a-cone>
+  <a-cylinder position="-20 6.2 10.5" radius="0.30" height="0.40" color="#7a6010"></a-cylinder>
+  <!-- Bar counter -->
+  <a-box position="-20 1.12 11.6" width="6.8" height="0.12" depth="0.85" color="#555555"></a-box>
+  <a-box position="-20 0.64 11.6" width="6.8" height="0.92" depth="0.80" color="#555555"></a-box>
+  <a-box position="-20 1.05 12.04" width="6.8" height="0.30" depth="0.06" color="#555555"></a-box>
+  <!-- Back bar wall with shelves -->
+  <a-box position="-20 1.4 9.0" width="6.5" height="2.0" depth="0.25" color="#b2beb5"></a-box>
+  <a-box position="-20 1.5 8.9" width="6.2" height="0.07" depth="0.28" color="#b2beb5"></a-box>
+  <a-box position="-20 2.1 8.9" width="6.2" height="0.07" depth="0.28" color="#b2beb5"></a-box>
+  <!-- Bottles shelf 1 -->
+  <a-cylinder position="-22.5 1.72 8.88" radius="0.08" height="0.44" color="#228840"></a-cylinder>
+  <a-cylinder position="-21.8 1.72 8.88" radius="0.07" height="0.38" color="#cc4400"></a-cylinder>
+  <a-cylinder position="-21.1 1.72 8.88" radius="0.08" height="0.42" color="#ffe840"></a-cylinder>
+  <a-cylinder position="-20.4 1.72 8.88" radius="0.07" height="0.40" color="#4488cc"></a-cylinder>
+  <a-cylinder position="-19.7 1.72 8.88" radius="0.08" height="0.44" color="#aa2288"></a-cylinder>
+  <a-cylinder position="-19.0 1.72 8.88" radius="0.07" height="0.38" color="#228840"></a-cylinder>
+  <a-cylinder position="-18.3 1.72 8.88" radius="0.08" height="0.42" color="#cc8800"></a-cylinder>
+  <!-- Bottles shelf 2 -->
+  <a-cylinder position="-22.2 2.32 8.88" radius="0.07" height="0.40" color="#cc4400"></a-cylinder>
+  <a-cylinder position="-21.5 2.32 8.88" radius="0.08" height="0.44" color="#228840"></a-cylinder>
+  <a-cylinder position="-20.8 2.32 8.88" radius="0.07" height="0.38" color="#4488cc"></a-cylinder>
+  <a-cylinder position="-20.1 2.32 8.88" radius="0.08" height="0.42" color="#ffe840"></a-cylinder>
+  <a-cylinder position="-19.4 2.32 8.88" radius="0.07" height="0.40" color="#aa2288"></a-cylinder>
+  <!-- Mirror behind bar -->
+  <a-box position="-20 2.55 8.9" width="4.5" height="0.7" depth="0.05" color="#999999"></a-box>
+  <a-box position="-20 2.55 8.88" width="4.3" height="0.58" depth="0.04" color="#90d0e0" opacity="0.55" transparent="true"></a-box>
+  <!-- Bar stools (4) -->
+  <a-cylinder position="-22.5 0.72 11.2" radius="0.05" height="0.72" color="#536878"></a-cylinder>
+  <a-cylinder position="-22.5 1.10 11.2" radius="0.28" height="0.10" color="#536878"></a-cylinder>
+  <a-cylinder position="-21.0 0.72 11.2" radius="0.05" height="0.72" color="#536878"></a-cylinder>
+  <a-cylinder position="-21.0 1.10 11.2" radius="0.28" height="0.10" color="#536878"></a-cylinder>
+  <a-cylinder position="-19.5 0.72 11.2" radius="0.05" height="0.72" color="#536878"></a-cylinder>
+  <a-cylinder position="-19.5 1.10 11.2" radius="0.28" height="0.10" color="#536878"></a-cylinder>
+  <a-cylinder position="-18.0 0.72 11.2" radius="0.05" height="0.72" color="#536878"></a-cylinder>
+  <a-cylinder position="-18.0 1.10 11.2" radius="0.28" height="0.10" color="#536878"></a-cylinder>
+  <!-- Hanging pendant lights (3) -->
+  <a-cylinder position="-22.0 2.82 10.5" radius="0.025" height="0.55" color="#888"></a-cylinder>
+  <a-sphere   position="-22.0 2.52 10.5" radius="0.18" color="#fffde0" emissive="#ffee80" emissive-intensity="1.2"></a-sphere>
+  <a-light type="point" position="-22.0 2.5 10.5" color="#ffe8a0" intensity="0.45" distance="5" decay="2"></a-light>
+  <a-cylinder position="-20.0 2.82 10.5" radius="0.025" height="0.55" color="#888"></a-cylinder>
+  <a-sphere   position="-20.0 2.52 10.5" radius="0.18" color="#fffde0" emissive="#ffee80" emissive-intensity="1.2"></a-sphere>
+  <a-light type="point" position="-20.0 2.5 10.5" color="#ffe8a0" intensity="0.45" distance="5" decay="2"></a-light>
+  <a-cylinder position="-18.0 2.82 10.5" radius="0.025" height="0.55" color="#888"></a-cylinder>
+  <a-sphere   position="-18.0 2.52 10.5" radius="0.18" color="#fffde0" emissive="#ffee80" emissive-intensity="1.2"></a-sphere>
+  <a-light type="point" position="-18.0 2.5 10.5" color="#ffe8a0" intensity="0.45" distance="5" decay="2"></a-light>
+  <!-- Side table with drink -->
+  <a-cylinder position="-23.0 0.62 10.0" radius="0.35" height="0.08" color="#8b6030"></a-cylinder>
+  <a-cylinder position="-23.0 0.30 10.0" radius="0.05" height="0.62" color="#6a4820"></a-cylinder>
+  <a-cylinder position="-23.0 0.72 10.0" radius="0.09" height="0.28" color="#c8f0ff" opacity="0.75" transparent="true"></a-cylinder>
+  <a-sphere   position="-23.0 0.80 10.0" radius="0.07" color="#ffffff" opacity="0.8" transparent="true"></a-sphere>
+  <!-- Sign board above bar -->
+  <a-box position="-20 2.82 11.3" width="3.2" height="0.55" depth="0.08" color="#5a3008"></a-box>
+  <a-box position="-20 2.82 11.27" width="2.9" height="0.34" depth="0.05" color="#ffe840" emissive="#ccaa00" emissive-intensity="0.5"></a-box>
+  
+  <a-assets>
+
+  <a-asset-item id="house-gltf" src="source\modern_house.glb"></a-asset-item>
+  <a-asset-item id="sport_court-gltf" src="source\sport_court.glb"></a-asset-item>
+  <a-asset-item id="pool-gltf" src="source\swimming_pool_343.glb"></a-asset-item>
+  <a-asset-item id="g-wagon-gltf" src="source\2025_mercedes-benz_g-class_amg_g_63.glb"></a-asset-item>
+  <a-asset-item id="benzsls-gltf" src="source\2014_mercedes-benz_sls_amg_black_series.glb"></a-asset-item>
+  <a-asset-item id="porshe-gltf" src="source\2018_porsche_911_carrera_gts.glb"></a-asset-item>
+  <a-asset-item id="dog1-gltf" src="source\dog1.glb"></a-asset-item>
+  <a-asset-item id="dog2-gltf" src="source\dog2.glb"></a-asset-item>
+
+
+
+  </a-assets>
+
+    <a-entity gltf-model="#house-gltf" position="8 0.1 0" scale="3 3 3" rotation="0 0 0" shadow></a-entity>
+    <a-entity gltf-model="#sport_court-gltf" position="40 0.1 0" scale="1 1.3 0.5" rotation="0 0 0" shadow></a-entity>
+    <a-entity gltf-model="#pool-gltf" position="-15 -1.2 25" scale="0.015 0.01 0.015" rotation="0 0 0" shadow></a-entity>
+    <a-entity gltf-model="#g-wagon-gltf" position="35 0 15.5" scale="200 200 200" rotation="0 -90 0" shadow></a-entity>
+    <a-entity gltf-model="#benzsls-gltf" position="35 0.3 22.5" scale="200 200 200" rotation="0 -90 0" shadow></a-entity>
+    <a-entity gltf-model="#porshe-gltf" position="35 0.02 28.5" scale="200 180 200" rotation="0 -90 0" shadow></a-entity>
+    <a-entity gltf-model="#dog1-gltf" position="0 1.1 17" scale="2.5 2 2.2" rotation="0 -105 0" shadow></a-entity>
+    <a-entity gltf-model="#dog2-gltf" position="10 0.1 17" scale="2.5 2 2.2" rotation="0 -75 0" shadow></a-entity>
+
+
+  
+</a-scene>
+</body>
+</html>
